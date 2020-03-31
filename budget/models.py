@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from datetime import datetime
 
 class Project(models.Model):
     name = models.CharField(max_length=100)
@@ -33,4 +34,8 @@ class Expense(models.Model):
     title = models.CharField(max_length=100)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    date = models.DateTimeField(default=datetime.now)
+
+    class Meta:
+        ordering = ('-date',)
 

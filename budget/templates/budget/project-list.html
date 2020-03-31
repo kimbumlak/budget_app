@@ -2,12 +2,25 @@
 {% block content %}
 
 <div class="container">
-
+    <h1>My Budget Projects</h1>
+    
+    <div class="row">
+        
+        {% for project in project_list %}
+        <div class="col s12 l3">
+            <div class="card-panel">
+                <h5>{{ project.name }}</h5>
+                <a href="{% url 'detail' project.slug %}" class="btn">Visit</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
     <div class="noproject-wrapper center">
-        <h3 class="grey-text">You don't have any projects, yet.</h3>
-        <a href="" class="btn-large grey">
+        <h3 class="grey-text">You can add any Budget projects!</h3>
+        <a href="{% url 'add' %}" class="btn-large grey">
             <i class="material-icons white-text left">add_circle</i>
-            <span class="bold">Add Projects</span>
+            <span class="bold">Add New Budget Projects</span>
         </a>
     </div>
 
